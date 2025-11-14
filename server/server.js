@@ -10,7 +10,22 @@ const PORT = process.env.PORT;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static('public', {
+    setHeaders: (res, filePath) => {
+        const ext = path.extname(filePath).toLowerCase();
+        const mimeMap = {
+            '.css': 'text/css',
+            '.js': 'application/javascript',
+            '.html': 'text/html',
+            '.json': 'application/json',
+            '.ico': 'image/x-icon'
+        };
+
+        if (mimeMap[ext]) {
+            res.setHeader('Content-Type', mimeMap[ext]);
+        }
+    }
+}));
 app.use(express.static('views'));
 
 // Serve main interface
