@@ -1,0 +1,13 @@
+{
+  "name": "snapline",
+  "version": "1.0.0",
+  "description": "A spy-themed web application for processing image intelligence",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
+  "keywords": ["spy", "images", "mongodb", "animation"],
+  "author": "OSD",
+  "license": "MIT"
+}
