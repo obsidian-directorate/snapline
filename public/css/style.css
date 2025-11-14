@@ -1,0 +1,119 @@
+/* SnapLine - Terminal theme */
+.terminal-theme {
+    background-color: #0a0a0a;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.mission-header {
+    text-align: center;
+    border-bottom: 1px solid #00ff00;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.mission-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.clearance-level {
+    color: #ff4444;
+    font-size: 0.9em;
+    margin: 5px 0 0 0;
+}
+
+.mission-control {
+    display: grid;
+    gap: 30px;
+}
+
+.status-panel, .comm-panel {
+    border: 1px solid #333;
+    padding: 20px;
+    background: rgba(0, 255, 0, 0.05);
+}
+
+.status-panel h2, .comm-panel h3 {
+    margin-top: 0;
+    color: #00ff00;
+}
+
+#statusIndicator {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #333;
+}
+
+.status-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background: #666;
+}
+
+.status-offline .status-light {
+    background: #ff4444;
+    animation: pulse-red 2s infinite;
+}
+
+.status-online .status-light {
+    background: #00ff00;
+    animation: pulse-green 2s infinite;
+}
+
+.status-text {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: transparent;
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 10px 20px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: #00ff00;
+    color: #000;
+}
+
+.log-window {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #333;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.log-entry {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+/* Animations */
+@keyframes pulse-green {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes pulse-red {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}

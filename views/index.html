@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapLine | Classified</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="shortcut icon" href="/public/images/favicon.ico" type="image/x-icon">
+</head>
+<body class="terminal-theme">
+    <div class="container">
+        <header class="mission-header">
+            <h1>🔐 SNAPLINE</h1>
+            <p class="clearance-level">CLASSIFIED - LEVEL 4 CLEARANCE REQUIRED</p>
+        </header>
+
+        <main class="mission-control">
+            <div class="status-panel">
+                <h2>Server Status</h2>
+                <div id="statusIndicator" class="status-offline">
+                    <span class="status-light"></span>
+                    <span class="status-text">CHECKING...</span>
+                </div>
+                <button id="checkStatus" class="btn-primary">CHECK SERVER STATUS</button>
+            </div>
+
+            <div class="comm-panel">
+                <h3>Communication Log</h3>
+                <div id="commLog" class="log-window">
+                    <div class="log-entry">[SYSTEM] Initializing SnapLine interface...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/public/js/app.js"></script>
+</body>
+</html>
