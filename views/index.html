@@ -3,34 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnapLine | Classified</title>
+    <title>SnapLine | Classified Intelligence System</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body class="terminal-theme">
+    <!-- Matrix background -->
+    <div id="matrixBackground" class="matrix-bg"></div>
+
+    <!-- Radar sweep -->
+    <div class="radar-container">
+        <div class="radar-sweep"></div>
+    </div>
+
     <div class="container">
+        <!-- Mission header -->
         <header class="mission-header">
-            <h1>🔐 SNAPLINE</h1>
-            <p class="clearance-level">CLASSIFIED - LEVEL 4 CLEARANCE REQUIRED</p>
+            <div class="agency-badge">
+                <div class="badge-icon">🕵️</div>
+                <h1 class="agency-name">SNAPLINE</h1>
+                <p class="clearance-badge">LEVEL 4 CLEARANCE</p>
+            </div>
+            <div class="mission-clock">
+                <div id="liveClock" class="digital-clock">00:00:00</div>
+                <div class="date-display" id="currentDate">-- --- ----</div>
+            </div>
         </header>
 
-        <main class="mission-control">
-            <div class="status-panel">
-                <h2>Server Status</h2>
-                <div id="statusIndicator" class="status-offline">
-                    <span class="status-light"></span>
-                    <span class="status-text">CHECKING...</span>
+        <!-- Main operations grid -->
+        <main class="operations-grid">
+            <!-- Intel input section -->
+            <section class="intel-panel">
+                <div class="panel-header">
+                    <h2>ASSET ACQUISITION</h2>
+                    <div class="status-indicators">
+                        <span class="status-dot secure"></span>
+                        <span class="status-dot active"></span>
+                    </div>
                 </div>
-                <button id="checkStatus" class="btn-primary">CHECK SERVER STATUS</button>
-            </div>
+                <div class="panel-content">
+                    <div class="input-group">
+                        <label for="imageUrl" class="input-label">INTEL SOURCE URL</label>
+                        <div class="input-container">
+                            <input
+                                type="text"
+                                id="imageUrl"
+                                class="command-input"
+                                placeholder="https://assets.intel.secure/image.jpg"
+                                autocomplete="off">
+                            <button id="developAsset" class="action-button">
+                                <span class="button-text">DEVELOP ASSET</span>
+                                <div class="button-loader"></div>
+                            </button>
+                        </div>
+                    </div>
 
-            <div class="comm-panel">
-                <h3>Communication Log</h3>
-                <div id="commLog" class="log-window">
-                    <div class="log-entry">[SYSTEM] Initializing SnapLine interface...</div>
+                    <div class="protocol-options">
+                        <div class="protocol-toggle">
+                            <span class="toggle-label">ANALYSIS GRID</span>
+                            <label class="switch">
+                                <input type="checkbox" id="analysisGrid" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- Intelligence display -->
+            <section class="intel-display-panel">
+                <div class="panel-header">
+                    <h2>INTELLIGENCE BRIEFING</h2>
+                    <div class="file-actions">
+                        <button class="icon-button" id="saveIntel" title="Archive Intel">💾</button>
+                        <button class="icon-button" id="analyzeIntel" title="Analyze Asset">🔍</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div id="assetContainer" class="asset-container">
+                        <div class="placeholder-state">
+                            <div class="placeholder-icon">📡</div>
+                            <h3>AWAITING INTEL</h3>
+                            <p>Enter image URL to develop asset for analysis</p>
+                            <div class="scanning-animation">
+                                <div class="scan-line"></div>
+                            </div>
+                        </div>
+
+                        <div id="developedAsset" class="developed-asset hidden">
+                            <div class="asset-frame">
+                                <img src="" alt="Developed Intelligence" id="intelImage" class="intel-image">
+                                <div class="analysis-overlay">
+                                    <div class="grid-overlay" id="analysisGridOverlay"></div>
+                                    <div class="magnifier-glass" id="magnifier"></div>
+                                </div>
+                            </div>
+                            <div class="asset-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">RESOLUTION:</span>
+                                    <span id="resolutionData" class="meta-value">--</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">SIZE:</span>
+                                    <span id="sizeData" class="meta-value">--</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">TIMESTAMP:</span>
+                                    <span id="timestampData" class="meta-value">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Communications panel -->
+            <section class="comms-panel">
+                <div class="panel-header">
+                    <h2>COMMUNICATIONS LOG</h2>
+                    <div class="comms-controls">
+                        <button class="icon-button" id="clearLog" title="Clear Log">🗑️</button>
+                        <button class="icon-button" id="exportLog" title="Export Log">📤</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div id="commLog" class="comms-log">
+                        <div class="log-entry system">
+                            <span class="timestamp">[00:00:00]</span>
+                            <span class="message">SYSTEM: SnapLine interface initialized</span>
+                        </div>
+                        <div class="log-entry agent">
+                            <span class="timestamp">[00:00:01]</span>
+                            <span class="message">AGENT: Authentication verified</span>
+                        </div>
+                        <div class="log-entry intel">
+                            <span class="timestamp">[00:00:02]</span>
+                            <span class="message">INTEL: Ready for asset acquisition</span>
+                        </div>
+                    </div>
+
+                    <div class="comms-input">
+                        <input 
+                            type="text"
+                            id="commInput"
+                            class="command-input"
+                            placeholder="Type command or message...">
+                        <button id="sendComm" class="action-button small">SEND</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System status panel -->
+            <section class="status-panel">
+                <div class="panel-header">
+                    <h2>SYSTEM STATUS</h2>
+                    <div class="status-indicator" id="systemStatus">
+                        <span class="status-dot"></span>
+                        <span class="status-text"></span>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span class="status-label">SERVER:</span>
+                            <span id="serverStatus" class="status-value">--</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">DATABASE:</span>
+                            <span id="dbStatus" class="status-value">--</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">ENCRYPTION:</span>
+                            <span class="status-value active">ACTIVE</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">CONNECTION:</span>
+                            <span id="connectionStatus" class="status-value">--</span>
+                        </div>
+                    </div>
+
+                    <div class="performance-meters">
+                        <div class="meter">
+                            <span class="meter-label">CPU USAGE</span>
+                            <div class="meter-bar">
+                                <div class="meter-fill" id="cpuMeter"></div>
+                            </div>
+                        </div>
+                        <div class="meter">
+                            <div class="meter-label">MEMORY</div>
+                            <div class="meter-bar">
+                                <div class="meter-fill" id="memoryMeter"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
+
+        <!-- Mission footer -->
+        <footer class="mission-footer">
+            <div class="footer-section">
+                <span class="footer-text">OPERATION: SNAPLINE</span>
+            </div>
+            <div class="footer-section">
+                <span class="footer-text" id="connectionCounter">CONNECTED AGENTS: 1</span>
+            </div>
+            <div class="footer-section">
+                <span class="footer-text" id="uptimeCounter">UPTIME: 00:00:00</span>
+            </div>
+        </footer>
     </div>
 
     <script src="/js/app.js"></script>
