@@ -1,0 +1,14 @@
+{
+  "name": "snapline-frontend",
+  "version": "1.0.0",
+  "description": "SnapLine - Spy-themed Image Rendering Frontend",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vite": "^7.2.2"
+  }
+}
