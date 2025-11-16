@@ -303,6 +303,11 @@ body.terminal-theme {
     animation: shimmer 1.5s infinite;
 }
 
+.action-button.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
 .action-button.loading .button-text {
     opacity: 0.7;
 }
@@ -628,6 +633,57 @@ input:checked + .slider::before {
     display: none !important;
 }
 
+/* Notification section */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    border-left: 4px solid var(--primary-green);
+    padding: 15px 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 400px;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.notification-success {
+    border-left-color: #00ff41;
+}
+
+.notification-error {
+    border-left-color: #ff4444;
+}
+
+.notification-warning {
+    border-left-color: #ffaa00;
+}
+
+.notification-info {
+    border-left-color: #00aaff;
+}
+
+.notification-icon {
+    font-size: 1.2em;
+}
+
+.notification-message {
+    color: var(--primary-green);
+    font-size: 0.9em;
+}
+
 /* Animations */
 @keyframes matrixScan {
     0% { transform: translateY(-100%); }
@@ -657,13 +713,17 @@ input:checked + .slider::before {
 @keyframes develop {
     0% {
         opacity: 0;
-        filter: blur(10px) grayscale(100%);
-        transform: scale(0.8);
+        filter: blur(20px) grayscale(100%) brightness(0.5);
+        transform: scale(0.8) rotate(-5deg);
+    }
+    50% {
+        filter: blur(10px) grayscale(50%) brightness(0.8);
+        transform: scale(0.9) rotate(-2deg);
     }
     100% {
         opacity: 1;
-        filter: blur(0) grayscale(0%);
-        transform: scale(1);
+        filter: blur(0) grayscale(0%) brightness(1);
+        transform: scale(1) rotate(0deg);
     }
 }
 
