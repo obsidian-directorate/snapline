@@ -50,13 +50,14 @@ cp .env.example .env
 # Backend (Terminal 1)
 cd backend && npm run dev
 
-# Frontend (Terminal 2)  
+# Frontend (Terminal 2)
 cd frontend && npm run dev
 ```
 
 ## 🛠️ Setup
 
-You can see the guide [here](docs/SETUP.md).
+- Setup guide: [SnapLine Setup Guide](docs/SETUP.md)
+- Setting up MongoDB: [MongoDB Setup Guide](docs/MONGODB_SETUP.md)
 
 ## 🔒 Security Features
 
