@@ -121,4 +121,4 @@ userSchema.statics.findByLogin = async function(login) {
   return user;
 };
 
-export default mongoose.model('users', userSchema);
+module.exports = mongoose.model('users', userSchema);

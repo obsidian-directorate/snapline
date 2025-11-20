@@ -65,4 +65,4 @@ fileSchema.methods.touch = function() {
   return this.save();
 };
 
-export default mongoose.model('files', fileSchema);
+module.exports = mongoose.model('files', fileSchema);

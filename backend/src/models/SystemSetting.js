@@ -126,4 +126,4 @@ systemSettingSchema.virtual('formattedValue').get(function() {
   }
 });
 
-export default mongoose.model('system_settings', systemSettingSchema);
+module.exports = mongoose.model('system_settings', systemSettingSchema);
